@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    sign_in(@user)
     if @user.save
-      redirect_to spots_path
+    sign_in(@user)
+      redirect_to root_path
     else
       render new_user_path
     end

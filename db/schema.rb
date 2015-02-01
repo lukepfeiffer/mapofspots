@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129002413) do
+ActiveRecord::Schema.define(version: 20150201134403) do
 
   create_table "authem_sessions", force: true do |t|
     t.string   "role",                    null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20150129002413) do
 
   add_index "authem_sessions", ["expires_at", "subject_type", "subject_id"], name: "index_authem_sessions_subject"
   add_index "authem_sessions", ["expires_at", "token"], name: "index_authem_sessions_on_expires_at_and_token", unique: true
+
+  create_table "spots", force: true do |t|
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "address_3"
+    t.string   "description"
+    t.text     "additional_info"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                           null: false
